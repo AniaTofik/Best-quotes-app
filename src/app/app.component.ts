@@ -20,4 +20,8 @@ export class AppComponent {
     this.quotes.unshift(this.quotation);
     this.quotation = { author: '', sentence: '', votes: 0};
   }
+
+  deleteQuotation(quotation: Quotation){
+    this.quotes = this.quotes.filter(e => e !== quotation);
+  }
 }
