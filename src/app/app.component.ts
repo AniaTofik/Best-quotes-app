@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { URLFormatOptions } from 'url';
 import { QUOTES } from './models/data-base';
 import { Quotation } from './models/quotation';
 
@@ -23,5 +24,9 @@ export class AppComponent {
 
   deleteQuotation(quotation: Quotation){
     this.quotes = this.quotes.filter(e => e !== quotation);
+  }
+
+  addVote(quotation: Quotation, value: number){
+    quotation.votes += value;
   }
 }
