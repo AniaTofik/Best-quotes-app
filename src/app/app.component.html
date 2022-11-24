@@ -1,20 +1,10 @@
 <app-navbar [title]="mainTitle"></app-navbar>
 <div class="container q-container">
   <!--Dodawanie cytatu-->
-  <button class="btn-floating teal add-button" (click)="onSwitchForm()">
+  <app-button customClasses="btn-floating teal add-button" (clickButton)="form.onSwitchForm()">
     <i class="material-icons">add</i>
-  </button>
-  <div class="row edit-row" [class.drawer]="showForm">
-    <div class="input-field col s4">
-      <input type="text" placeholder="Autor" [(ngModel)]="quotation.author" />
-    </div>
-    <div class="input-field col s6">
-      <input type="text" placeholder="Cytat" [(ngModel)]="quotation.sentence"  />
-    </div>
-    <div class="input-field col s2">
-      <button class="btn small" (click)="addQuotation()">Dodaj</button>
-    </div>
-  </div>
+  </app-button>
+  <app-form #form (newQuotation)="onNewQuotation($event)"></app-form>
   <!-- Koniec dodawanie cytatu -->
 
   <div class="row">
@@ -32,13 +22,13 @@
             </div>
             <div class="card-action right-align">
               <span class="badge grey darken-2 left white-text">{{ quotation.votes}}</span>
-              <button class="btn blue mr-5" (click)="addVote(quotation, +1)">
-                <i class="material-icons">exposure_plus_1</i>
-              </button>
-              <button class="btn brown mr-5" (click)="addVote(quotation, -1)">
+       <app-button customClasses="btn blue mr-5" (click)="addVote(quotation, +1)">
+          <i class="material-icons">exposure_plus_1</i>
+       </app-button>
+              <app-button customClasses="btn brown mr-5" (click)="addVote(quotation, -1)">
                 <i class="material-icons">exposure_neg_1</i>
-              </button>
-              <button class="btn red" (click)="deleteQuotation(quotation)">Usuń cytat</button>
+              </app-button>
+              <app-button customClasses="btn red" (click)="deleteQuotation(quotation)">Usuń cytat</app-button>
             </div>
           </div>
         </div>

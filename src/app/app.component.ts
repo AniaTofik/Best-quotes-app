@@ -8,21 +8,11 @@ import { Quotation } from './models/quotation';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showForm = false;
   quotes: Quotation[] = QUOTES;
-  quotation: Quotation = { author: '', sentence: '', votes: 0};
   mainTitle = 'Najlepsze cytaty';
   bestTitle = 'Najlepsze';
   worstTitle = 'Najgorsze';
 
-  onSwitchForm(): void {
-    this.showForm = !this.showForm;
-  }
-
-  addQuotation(){
-    this.quotes.unshift(this.quotation);
-    this.quotation = { author: '', sentence: '', votes: 0};
-  }
 
   deleteQuotation(quotation: Quotation){
     this.quotes = this.quotes.filter(e => e !== quotation);
@@ -38,5 +28,9 @@ bestQuotes(){
 
 worstQuotes(){
   return this.quotes.filter(q => q.votes < 0)
+}
+
+onNewQuotation(quotation: Quotation) {
+  this.quotes.unshift(quotation)
 }
 }
