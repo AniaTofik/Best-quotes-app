@@ -22,12 +22,7 @@
             </div>
             <div class="card-action right-align">
               <span class="badge grey darken-2 left white-text">{{ quotation.votes}}</span>
-       <app-button customClasses="btn blue mr-5" (click)="addVote(quotation, +1)">
-          <i class="material-icons">exposure_plus_1</i>
-       </app-button>
-              <app-button customClasses="btn brown mr-5" (click)="addVote(quotation, -1)">
-                <i class="material-icons">exposure_neg_1</i>
-              </app-button>
+              <app-vote-buttons (voteValue)="addVote(quotation, $event)"></app-vote-buttons>
               <app-button customClasses="btn red" (click)="deleteQuotation(quotation)">Usuń cytat</app-button>
             </div>
           </div>
